@@ -17,8 +17,10 @@ const promptMove = (player) => new Promise((resolve) => {
   });
 });
 
-const updateBoard = (move) => {
-  
+const updateBoard = (board, move, player) => {
+  // eslint-disable-next-line no-param-reassign
+  debugger;
+  board[Math.trunc(move / 3)][move % 3] = player;
 };
 
 const displayBoard = (board) => {
@@ -45,11 +47,13 @@ const main = async (board) => {
   while (!isWin) {
     const turnPlayer = turn % 2 === 0 ? 'O' : 'X';
     // eslint-disable-next-line no-await-in-loop
-    const move = await promptMove(turnPlayer);
-    updateBoard(move);
+    const moveStr = await promptMove(turnPlayer);
+    const move = parseInt(moveStr, 10) - 1;
+    updateBoard(board, move, turnPlayer);
     displayBoard(board);
 
     isWin = getGameStatus(board, turn);
+    turn += 1;
   }
 
   rl.close();
