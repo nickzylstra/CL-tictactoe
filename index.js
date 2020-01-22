@@ -33,8 +33,14 @@ const displayBoard = (board) => {
 };
 
 const getGameStatus = (board, turn) => {
-
-  return turn === 9;
+  if (turn === 9) {
+    return true;
+  }
+  let isWin = false;
+  // check horizontal wins
+  // check horizontal wins
+  // check diagonal wins
+  return isWin;
 };
 
 
