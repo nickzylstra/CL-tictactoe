@@ -33,16 +33,16 @@ const displayBoard = (board) => {
   `);
 };
 
-const getGameStatus = (board) => {
+const getGameStatus = (board, turn) => {
 
-  return true;
+  return turn === 9;
 };
 
 
 const main = async (board) => {
   displayBoard(board);
   let isWin = false;
-  let turn = 0;
+  let turn = 1;
 
   while (!isWin) {
     const turnPlayer = turn % 2 === 0 ? 'O' : 'X';
