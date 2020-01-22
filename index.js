@@ -40,14 +40,16 @@ const getGameStatus = (board) => {
 const main = async (board) => {
   displayBoard(board);
   let isWin = false;
+  let turn = 0;
 
   while (!isWin) {
+    const turnPlayer = turn % 2 === 0 ? 'O' : 'X';
     // eslint-disable-next-line no-await-in-loop
-    const move = await promptMove();
+    const move = await promptMove(turnPlayer);
     updateBoard(move);
     displayBoard(board);
 
-    isWin = getGameStatus(board);
+    isWin = getGameStatus(board, turn);
   }
 
   rl.close();
