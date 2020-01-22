@@ -19,7 +19,6 @@ const promptMove = (player) => new Promise((resolve) => {
 
 const updateBoard = (board, move, player) => {
   // eslint-disable-next-line no-param-reassign
-  debugger;
   board[Math.trunc(move / 3)][move % 3] = player;
 };
 
